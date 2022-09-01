@@ -1,12 +1,16 @@
 package com.entra21.eventoapp.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Evento {
+public class Evento implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // " IDENTITY "
@@ -46,11 +50,11 @@ public class Evento {
 		this.horario = horario;
 	}
 
-	public long getId() {
+	public long getCodigo() {
 		return codigo;
 	}
 
-	public void setId(long codigo) {
+	public void setCodigo(long codigo) {
 		this.codigo = codigo;
 	}	
 }
