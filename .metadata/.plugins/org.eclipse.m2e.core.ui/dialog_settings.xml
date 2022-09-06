@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\Sérgio Felipe Starke\Desktop\EventoApp"/>
+			<item value="C:\Users\Sérgio Felipe Starke\Desktop\EventoApp\src"/>
 			<item value="C:\Users\sergio.starke\Downloads\eventoapp"/>
 		</list>
 		<list key="projectNameTemplate">
