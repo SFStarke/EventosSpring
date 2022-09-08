@@ -5,6 +5,8 @@ import com.entra21.eventoapp.models.Evento;
 
 public interface EventoRepository extends JpaRepository<Evento, String> {
 
+	Evento findByCodigo(long codigo);
+
 	
 	
 }
