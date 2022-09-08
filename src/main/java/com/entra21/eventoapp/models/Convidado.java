@@ -17,7 +17,6 @@ public class Convidado {
 	@ManyToOne
 	private Evento evento;
 	
-	
 	public Evento getEvento() {
 		return evento;
 	}
