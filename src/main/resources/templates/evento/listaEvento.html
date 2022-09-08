@@ -2,6 +2,7 @@
 	<html xmls:th="http://thymeleat.org"
 	      xmls:layout= "http://www.ultraq.net.nz/thymeleaf/layout">
 	<head>
+	<meta charset="utf-8">
 	<!--Import Google Icon Font-->
 	      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	      <!--Import materialize.css-->
@@ -13,14 +14,22 @@
 	<title>EventosApp</title>
 	</head>
 	<body>
-	<h1>Lista de Eventos</h1>
-	<h3><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Eventos</a></h3>
+	<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Lista de Evento</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Eventos</a></li>
+      </ul>
+    </div>
+  </nav>
 	<table class="container">
 		<thead>
 			<th>Nome:</th>
 			<th>Local:</th>
 			<th>Data</th>
-			<th>Horario</th>
+			<th>Hotário</th>
+			<th>deletar</th>
+			
 		</thead>
 		<tbody>
 			<tr th:each="evento : ${leventos}">	
@@ -28,6 +37,7 @@
 					<td><span th:text= "${evento.local}"></span></td>
 					<td><span th:text= "${evento.data}"></span></td>
 					<td><span th:text= "${evento.horario}"></span></td>
+		    <td><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		</tbody>
 	</table>

@@ -13,11 +13,18 @@
 <title>Evento</title>
 </head>
 <body>
-<h1>Evento</h1>
-<h3><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></h3>
+
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Evento</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
+      </ul>
+    </div>
+  </nav>
+  
 <!-- <div th:each="evento : ${evento}" class="container detalhesEvento"> -->
 <div class="container detalhesEvento">
-
 <h5>Detalhes do Evento</h5>
 	<div class="row">
 		<p>Nome: <span th:text= "${evento.nome}"></span></p>
@@ -30,21 +37,26 @@
             Nome: <input type="text" value="" name="nomeConvidado"/>
             Rg: <input type="text" value="" name="rg"/>
             <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
-        </form>
-        <h5>Lista de Convidados</h5>
-    <div th:each="convidados : ${convidados}">     
-        <div class="row">     
-            <div class= "input-field col s6">       
-                <p><span th:text= "${convidados.nomeConvidado}"></span></p>
-            </div>    
-            <div class= "input-field col s3">        
-                <p><span th:text= "${convidados.rg}"></span></p>    
-            </div>   
-        </div> 
-    </div>
-</div>
+    </form>
+    <h5>Lista de Convidados</h5>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome Convidado:</th>
+				<th>Rg:</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="convidados : ${convidados}">
+				<td><span th:text= "${convidados.nomeConvidado}"></span></td>
+				<td><span th:text= "${convidados.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidados.rg)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	
+</table>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
-
 </body>
 </html>
