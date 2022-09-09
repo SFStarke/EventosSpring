@@ -17,7 +17,7 @@
 <body>
 <nav>
     <div class="nav-wrapper #00695c teal darken-3">
-      <a href="#" class="brand-logo">Cadastrar Eventos</a>
+      <a href="#" class="brand-logo">Editar Eventos</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
       </ul>
@@ -28,16 +28,16 @@
 	
 	<form class= "container formEvento" method="post">
 	
-		Nome:<input type="text" value="" name ="nome"/>
+		Nome:<input type="text" th:value= "${evento.nome}" name ="nome"/>
 		<div class= "row">
 			<div class = "input-field col s6">    
-				Local:<input type="text" value=""  name="local" /> 
+		Local:<input type="text" th:value= "${evento.local}"  name="local" /> 
 			</div>
 			<div class = "input-field col s3">    
-				Data:<input type="date" value=""  name="data"/>
+		Data:<input type="date" th:text= "${evento.data}"  name="data"/>
 			</div>
 			<div class = "input-field col s3">   
-				Horário:<input type="time" value=""  name="horario"/>
+		Horário:<input type="time" th:text= "${evento.horario}"  name="horario"/>
 			</div>
 		</div>	 
 		 

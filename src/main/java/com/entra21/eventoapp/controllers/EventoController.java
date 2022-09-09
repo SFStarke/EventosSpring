@@ -106,4 +106,30 @@ public class EventoController {
         return "redirect:/" + codigo ;    
         
     }
+	
+//	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
+//	public String detalhesEventoEditar(@PathVariable("codigo") long codigo,
+//			@Valid Convidado convidado, BindingResult result,
+//			RedirectAttributes attributes) {
+//		if(result.hasErrors()) {
+//	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+//	        return "redirect:/{codigo}";
+//	    }
+//	    Evento evento = er.findByCodigo(codigo);
+//	    convidado.setEvento(evento);
+//	    cr.save(convidado);
+//	    attributes.addFlashAttribute("mensagem", "Convidado editado com sucesso!");
+//	    return "redirect:/{codigo}";
+//	    
+//	}
+//	
+//	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+//	public ModelAndView detalhesEventoGetEditar(@PathVariable("codigo") long codigo) {
+//		Evento evento = er.findByCodigo(codigo);
+//		ModelAndView mv = new ModelAndView("evento/editarEvento"); 
+//		mv.addObject("evento", evento);
+//		Iterable<Convidado> convidados = cr.findByEvento(evento);
+//		mv.addObject("convidados", convidados);
+//		return mv;
+//	}
 }

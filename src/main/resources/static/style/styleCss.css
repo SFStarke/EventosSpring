@@ -1,0 +1,38 @@
+.detalhesEvento{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	margin-bottom: 60px;
+}
+
+.formConvidado{
+	box-shadow: 0px 0px 5px grey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 60px;
+}
+
+.tabelaConvidado{
+	width: 50%
+}
+
+h5
+{
+    text-align: center;
+    color: #40E0D0;   
+}
+
+.formEvento {
+    box-shadow: 0px 0px 5px gray;
+    padding: 20px;
+    margin-bottom: 60px;
+}
+
+nav {
+	margin-bottom: 100px;
+}
+
+h3 {
+	text-align: center;
+}
