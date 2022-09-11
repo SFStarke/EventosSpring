@@ -31,22 +31,25 @@
   <h3>Lista de Eventos</h3>
 	<table class="container">
 		<thead>
-			<th>Nome:</th>
-			<th>Local:</th>
+			<th>Nome</th>
+			<th>Local</th>
 			<th>Data</th>
 			<th>Hotário</th>
 			<th>Excluir</th>
+			<th>Atualizar</th>
 			
 		</thead>
 		<tbody>
-			<tr th:each="evento : ${leventos}">	
-			<!-- (l) de lista eventos -->
+		<!-- Traz do Model Evento as Entidades -->
+			<tr th:each="evento : ${leventos}">	<!-- (l) de lista eventos -->
+			
 			<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text= "${evento.nome}"></span></a></td>		
 <!-- <div> & <span> Definir partes de um documento [ No span se acessa o objeto ]-->
 					<td><span th:text= "${evento.local}"></span></td>
 					<td><span th:text= "${evento.data}"></span></td>
 					<td><span th:text= "${evento.horario}"></span></td>
 		    <td><a th:href="${(#mvc.url('EC#deletarEvento').arg(0, evento.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
+		    <!-- ><td><a th:href="${(#mvc.url('EC#upDate').arg(0, evento.codigo)).build()}"><i class="material-icons left">update</i></a></td> -->
 			</tr>
 		</tbody>
 	</table>

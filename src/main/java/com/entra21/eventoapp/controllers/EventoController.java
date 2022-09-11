@@ -18,8 +18,8 @@ import com.entra21.eventoapp.repository.EventoRepository;
 @Controller
 public class EventoController {
 	
-	@Autowired
-	private EventoRepository er;
+	@Autowired // Ingeção de dependências 
+	private EventoRepository er; // É criada um nova Instância de sua INTERFACE
 	@Autowired
 	private ConvidadoRepository cr;
 	
@@ -28,6 +28,12 @@ public class EventoController {
 	public String form(){
 	return "evento/formEvento";	
 	}
+	
+//	@RequestMapping(value = "/update", method = RequestMethod.GET)
+//	public String upDate(){
+//		return "evento/editarEvento";
+//	}
+	
 	// "POST" quando salvo, envia para requisição em DB. 
 	@RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)
 	public String form(@Valid Evento evento,  BindingResult result,
@@ -37,19 +43,20 @@ public class EventoController {
 	        return "redirect:/cadastrarEvento"; // Redireciona Cadastrar Evento
 	    }
 	
-	    er.save(evento); //É feito sua ingeção de dependência "DB"
+	    er.save(evento); //É salvo o evento em "DB"
 	    
 	    attributes.addFlashAttribute("mensagem", "Evento cadastrado com sucesso!");
 	    
 	return "redirect:/cadastrarEvento";	
 	}
+	
 	// Método para retorno "Busca" da Lista de evento
 	@RequestMapping("/eventos")	
 	public ModelAndView listaEventos(){		
-		ModelAndView mv = new ModelAndView("evento/listaEvento");	// Objeto para receber a lista de Eventos
+		ModelAndView mv = new ModelAndView("evento/listaEvento");	// Objeto para receber a lista de eventos "listaEvento"
 		Iterable<Evento> eventos = er.findAll(); // Objeto Interable, Busca do banco de dados e transforma em sql		
-		mv.addObject("leventos", eventos); // leventos atributo "L de lista" 								  
-						   //que está no HTML		
+		mv.addObject("leventos", eventos); // Faz aparecer na view [ "leventos" está em <tr th:each="evento : ${leventos}">] 								  
+						   		
 		return mv;
 	}
 	
@@ -58,6 +65,7 @@ public class EventoController {
 		Evento evento = er.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("evento/detalhesEvento"); 
 		mv.addObject("evento", evento);
+		// INTERABLE faz busca no "DB"
 		Iterable<Convidado> convidados = cr.findByEvento(evento);
 		mv.addObject("convidados", convidados);
 		return mv;
@@ -105,22 +113,6 @@ public class EventoController {
         
     }
 	
-//	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-//	public String detalhesEventoEditar(@PathVariable("codigo") long codigo,
-//			@Valid Convidado convidado, BindingResult result,
-//			RedirectAttributes attributes) {
-//		if(result.hasErrors()) {
-//	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-//	        return "redirect:/{codigo}";
-//	    }
-//	    Evento evento = er.findByCodigo(codigo);
-//	    convidado.setEvento(evento);
-//	    cr.save(convidado);
-//	    attributes.addFlashAttribute("mensagem", "Convidado editado com sucesso!");
-//	    return "redirect:/{codigo}";
-//	    
-//	}
-//	
 //	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
 //	public ModelAndView detalhesEventoGetEditar(@PathVariable("codigo") long codigo) {
 //		Evento evento = er.findByCodigo(codigo);
@@ -130,4 +122,21 @@ public class EventoController {
 //		mv.addObject("convidados", convidados);
 //		return mv;
 //	}
+//	
+//	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
+//	public String detalhesEventoEditar(@PathVariable("codigo") long codigo,
+//			@Valid Convidado convidado, BindingResult result,
+//			RedirectAttributes attributes) {
+//		if(result.hasErrors()) {
+//	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+//	        return "redirect:/{codigos}";
+//	    }
+//	    Evento evento = er.findByCodigo(codigo);
+//	    convidado.setEvento(evento);
+//	    cr.save(convidado);
+//	    attributes.addFlashAttribute("mensagem", "Evento atualizado com sucesso!");
+//	    return "redirect:/{codigo}";
+//	    
+//	}
+	
 }
