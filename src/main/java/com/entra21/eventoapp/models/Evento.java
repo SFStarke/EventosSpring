@@ -1,20 +1,22 @@
 package com.entra21.eventoapp.models;
 
 import java.io.Serializable;
-import java.util.List;
 
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 
+// Nesta classe fica estabelecidA a entidade para BANCO DE DADOS
+
 
 @Entity
-public class Evento implements Serializable{
+public class Evento implements Serializable{ //Implements Gera ID automático
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L; //Gerar ID automático
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO) // " IDENTITY "

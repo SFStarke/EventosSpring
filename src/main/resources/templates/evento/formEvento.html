@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-
+<meta charset= "utf-8">
 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -23,24 +23,24 @@
       </ul>
     </div>
   </nav>
-  
+  <h3>Cadastrar Eventos</h3>
 	<th:block th:include="evento/mensagemValidacao"></th:block>
 	
 	<form class= "container formEvento" method="post">
-	
-		Nome:<input type="text" value="" name ="nome"/>
-		<div class= "row">
-			<div class = "input-field col s6">    
-				Local:<input type="text" value=""  name="local" /> 
+
+		Nome:<input type="text" value="" name="nome" />
+		<div class="row">
+			<div class="input-field col s6">
+				Local:<input type="text" value="" name="local" />
 			</div>
-			<div class = "input-field col s3">    
-				Data:<input type="date" value=""  name="data"/>
+			<div class="input-field col s3">
+				Data:<input type="date" value="" name="data" />
 			</div>
-			<div class = "input-field col s3">   
-				Hor·rio:<input type="time" value=""  name="horario"/>
+			<div class="input-field col s3">
+				Hor√°rio:<input type="time" value="" name="horario" />
 			</div>
-		</div>	 
-		 
+		</div>
+
 		<button class="waves-effect waves-light btn" type="submit">Salvar</button>
 	</form>
 	      <!--JavaScript at end of body for optimized loading-->

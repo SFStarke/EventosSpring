@@ -16,25 +16,33 @@
 	</head>
 	<body>
 	<nav>
+	<!-- <div> & <span> Definir partes de um documento [ No span se acessa o objeto ]-->
+	<!-- <th> Define uma célula cabeçalho do grupo de células de sua tabela -->
     <div class="nav-wrapper #304ffe indigo accent-4">
-      <a href="#" class="brand-logo">Lista de Evento</a>
+    
+      <a href="#" class="brand-logo">Lista de Eventos</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+<!-- Criar um link, para mandar pagina de Cadastro Evantos [ <a href="/cadastrarEvento"> Cadastrar Evento </a> ]-->
         <li><a href="/cadastrarEvento" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Eventos</a></li>
       </ul>
     </div>
   </nav>
+  <h3>Lista de Eventos</h3>
 	<table class="container">
 		<thead>
 			<th>Nome:</th>
 			<th>Local:</th>
 			<th>Data</th>
 			<th>Hotário</th>
-			<th>deletar</th>
+			<th>Excluir</th>
 			
 		</thead>
 		<tbody>
 			<tr th:each="evento : ${leventos}">	
+			<!-- (l) de lista eventos -->
 			<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.codigo)).build()}"><span th:text= "${evento.nome}"></span></a></td>		
+<!-- <div> & <span> Definir partes de um documento [ No span se acessa o objeto ]-->
 					<td><span th:text= "${evento.local}"></span></td>
 					<td><span th:text= "${evento.data}"></span></td>
 					<td><span th:text= "${evento.horario}"></span></td>

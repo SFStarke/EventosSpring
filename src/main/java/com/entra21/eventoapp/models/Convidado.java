@@ -6,6 +6,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 
+//Nesta classe fica estabelecidA a entidade para BANCO DE DADOS
+
 @Entity
 public class Convidado {
 	
