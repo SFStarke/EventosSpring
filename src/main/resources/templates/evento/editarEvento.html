@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-
+<meta charset="utf-8">
 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -23,7 +23,7 @@
       </ul>
     </div>
   </nav>
-  
+  <h3>Editar Evento</h3>
 	<th:block th:include="evento/mensagemValidacao"></th:block>
 	
 	<form class= "container formEvento" method="post">
@@ -34,10 +34,10 @@
 		Local:<input type="text" th:value= "${evento.local}"  name="local" /> 
 			</div>
 			<div class = "input-field col s3">    
-		Data:<input type="date" th:text= "${evento.data}"  name="data"/>
+		Data:<input type="date" th:value= "${evento.data}"  name="data"/>
 			</div>
 			<div class = "input-field col s3">   
-		Hor·rio:<input type="time" th:text= "${evento.horario}"  name="horario"/>
+		Hor√°rio:<input type="time" th:value= "${evento.horario}"  name="horario"/>
 			</div>
 		</div>	 
 		 

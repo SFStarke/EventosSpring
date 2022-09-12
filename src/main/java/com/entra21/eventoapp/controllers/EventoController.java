@@ -29,11 +29,6 @@ public class EventoController {
 	return "evento/formEvento";	
 	}
 	
-//	@RequestMapping(value = "/update", method = RequestMethod.GET)
-//	public String upDate(){
-//		return "evento/editarEvento";
-//	}
-	
 	// "POST" quando salvo, envia para requisição em DB. 
 	@RequestMapping(value = "/cadastrarEvento", method= RequestMethod.POST)
 	public String form(@Valid Evento evento,  BindingResult result,
@@ -113,30 +108,43 @@ public class EventoController {
         
     }
 	
-//	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
-//	public ModelAndView detalhesEventoGetEditar(@PathVariable("codigo") long codigo) {
+//	@RequestMapping("update")
+//	public String update(long codigo) {
 //		Evento evento = er.findByCodigo(codigo);
-//		ModelAndView mv = new ModelAndView("evento/editarEvento"); 
-//		mv.addObject("evento", evento);
-//		Iterable<Convidado> convidados = cr.findByEvento(evento);
-//		mv.addObject("convidados", convidados);
-//		return mv;
+//		er.findByCodigo(codigo);
+//		return "redirect:/editarEvento";
 //	}
-//	
-//	@RequestMapping(value = "/{codigo}", method = RequestMethod.POST)
-//	public String detalhesEventoEditar(@PathVariable("codigo") long codigo,
-//			@Valid Convidado convidado, BindingResult result,
-//			RedirectAttributes attributes) {
-//		if(result.hasErrors()) {
-//	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-//	        return "redirect:/{codigos}";
-//	    }
-//	    Evento evento = er.findByCodigo(codigo);
-//	    convidado.setEvento(evento);
-//	    cr.save(convidado);
-//	    attributes.addFlashAttribute("mensagem", "Evento atualizado com sucesso!");
-//	    return "redirect:/{codigo}";
-//	    
+	
+//	@RequestMapping(value = "/{codigo}", method = RequestMethod.GET)
+//	public String update(long codigo) {
+//		Evento evento = er.findByCodigo(codigo);
+//		er.findByCodigo(codigo);
+//		return "redirect:/evento/editarEvento";
 //	}
+	
+	@RequestMapping(value = "/editar_{codigo}", method = RequestMethod.GET)
+	public ModelAndView update(@PathVariable("codigo") long codigo) {
+		
+		Evento evento = er.findByCodigo(codigo);
+		ModelAndView mv = new ModelAndView("evento/editarEvento"); 
+	
+		mv.addObject("evento", evento);
+		Iterable<Convidado> convidados = cr.findByEvento(evento);
+		mv.addObject("convidados", convidados);
+		return mv;
+	}
+
+	@RequestMapping(value = "/editar_{codigo}", method = RequestMethod.POST)
+	public String updatePost(@PathVariable("codigo") long codigo,
+			@Valid Evento evento, BindingResult result,
+			RedirectAttributes attributes) {
+		if(result.hasErrors()) { // Verefica se campos estão preenchidos
+	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+	        return "redirect:editar_/{codigo}";
+	    }
+	    er.save(evento);
+	    attributes.addFlashAttribute("mensagem", "Evento atualizado com sucesso!");
+	    return "redirect:/editar_{codigo}";
+	}
 	
 }
