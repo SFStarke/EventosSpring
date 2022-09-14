@@ -37,7 +37,7 @@ public class EventoController {
 	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
 	        return "redirect:/cadastrarEvento"; // Redireciona Cadastrar Evento
 	    }
-	
+		
 	    er.save(evento); //É salvo o evento em "DB"
 	    
 	    attributes.addFlashAttribute("mensagem", "Evento cadastrado com sucesso!");

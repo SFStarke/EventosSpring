@@ -20,13 +20,14 @@
       <a href="#" class="brand-logo">Cadastrar Eventos</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
+        <li><a href="/logout" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Sair</a></li>
       </ul>
     </div>
   </nav>
   <h3>Cadastrar Eventos</h3>
 	<th:block th:include="evento/mensagemValidacao"></th:block>
 	
-	<form class= "container formEvento" method="post">
+	<form class= "container formEvento" method="post"> <!--  botão salva "submit" -->
 
 		Nome:<input type="text" value="" name="nome" />
 		<div class="row">

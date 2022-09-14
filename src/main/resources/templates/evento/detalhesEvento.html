@@ -16,17 +16,18 @@
 </head>
 <body>
 <nav>
-    <div class="nav-wrapper #64ffda teal accent-2">
+    <div class="nav-wrapper #607d8b blue-grey">
       <a href="#" class="brand-logo">Evento</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
+      	<li><a href="/logout" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Sair</a></li>
       </ul>
     </div>
   </nav>
 <h3>Detalhes do Evento</h3>
   
 <!-- <div th:each="evento : ${evento}" class="container detalhesEvento"> -->
-<div class="container detalhesEvento">
+<div class= "container detalhesEvento">
 <h5>Evento</h5>
 <div class="row">
 		<p>Nome: <span th:text= "${evento.nome}"></span></p>
@@ -50,7 +51,7 @@
 		<thead>
 			<tr>
 				<th>Nome Convidado:</th>
-				<th>Rg:</th>
+				<th>Rg</th>
 				<th>Deletar</th>
 			</tr>
 		</thead>
@@ -60,6 +61,7 @@
 				<td><span th:text= "${convidados.rg}"></span></td>
 				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidados.rg)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
+			
 		</tbody>
 	
 </table>
