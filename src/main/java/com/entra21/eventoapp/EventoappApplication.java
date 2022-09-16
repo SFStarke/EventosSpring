@@ -9,7 +9,7 @@ public class EventoappApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EventoappApplication.class, args);
-	//	System.out.println(new BCryptPasswordEncoder().encode("123"));
+//	System.out.println(new BCryptPasswordEncoder().encode("123"));
 	}
 
 }
