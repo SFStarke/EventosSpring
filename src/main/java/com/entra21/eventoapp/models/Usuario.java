@@ -22,7 +22,8 @@ public class Usuario implements UserDetails{
 	private String nomeCompleto;
 	private String senha;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	//@ManyToMany(fetch = FetchType.EAGER) // Não se faz mais necessidade
+	@ManyToMany
 	@JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "login"), 
 				inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
 	private List<Role> roles;

@@ -2,7 +2,6 @@
 <html xmlns:th="http://thymeleaf.org"
 	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-<meta charset="ISO-8859-1">
 	 <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
       <!--Import materialize.css-->
@@ -15,55 +14,52 @@
 <title>Evento</title>
 </head>
 <body>
-<nav>
-    <div class="nav-wrapper #607d8b blue-grey">
+<header>
+	 <nav>
+    <div class="nav-wrapper">
       <a href="#" class="brand-logo">Evento</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
-      	<li><a href="/logout" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Sair</a></li>
       </ul>
     </div>
   </nav>
-<h3>Detalhes do Evento</h3>
-  
+</header> 
 <!-- <div th:each="evento : ${evento}" class="container detalhesEvento"> -->
-<div class= "container detalhesEvento">
-<h5>Evento</h5>
-<div class="row">
+<div class="container detalhesEvento">
+<h5>Detalhes do Evento</h5>
+	<div class="row">
 		<p>Nome: <span th:text= "${evento.nome}"></span></p>
 		<p>Local: <span th:text= "${evento.local}"></span></p>
 		<p>Data: <span th:text= "${evento.data}"></span></p>
 		<p>Horario: <span th:text= "${evento.horario}"></span></p>
 	</div>
 </div>
-	
 	<th:block th:include="evento/mensagemValidacao"></th:block>
 	<div class = "container formConvidado">
-	<form method="post">
-            Nome: <input type="text" value="" name="nomeConvidado"/>
-            Rg: <input type="text" value="" name="rg"/>
-            <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
-    </form>
-	</div>
-	
-    <h5>Lista de Convidados</h5>
-	<table class="container tabelaConvidado">
-		<thead>
+		<form method="post">
+	            Nome: <input type="text" value="" name="nomeConvidado"/>
+	            Rg: <input type="text" value="" name="rg"/>
+	            <button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+	    </form>
+    </div>
+   
+	<table class = "container tabelaConvidado">
+		<thead>	
+			 <h5><CENTER>Lista de Convidados</CENTER></h5>
 			<tr>
 				<th>Nome Convidado:</th>
-				<th>Rg</th>
+				<th>Rg:</th>
 				<th>Deletar</th>
-				<th>Atualizar</th>
 			</tr>
 		</thead>
 		<tbody>
+		
 			<tr th:each="convidados : ${convidados}">
 				<td><span th:text= "${convidados.nomeConvidado}"></span></td>
 				<td><span th:text= "${convidados.rg}"></span></td>
 				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidados.rg)).build()}"><i class="material-icons left">delete</i></a></td>
-				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#updateGuest').arg(0, convidados.rg)).build()}"><i class="material-icons left">update</i></a></td>
+				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#editarConvidado').arg(0, evento.codigo).arg(1, convidados.rg)).build()}"><i class="material-icons left">edit</i></a></td>
 			</tr>
-			
 		</tbody>
 	
 </table>

@@ -147,4 +147,30 @@ public class EventoController {
 	    return "redirect:/editar_{codigo}";
 	}
 	
+// E D I T A R  C O N V I D A D O...	
+	//METODO QUE EDITA O CONVIDADO
+		 @RequestMapping(value="updateGuest/{codigo}/{rg}", method=RequestMethod.GET)
+	     public ModelAndView editarConvidado(@PathVariable("codigo") long codigo, @PathVariable("rg") String rg) {
+	         Evento evento = er.findByCodigo(codigo);
+	         ModelAndView mv = new ModelAndView("evento/editaConvidado");
+	         mv.addObject("evento",evento);
+	         
+	         Convidado convidado = cr.findByRg(rg);
+		     convidado.setEvento(evento);
+//			
+				mv.addObject("evento",evento);
+				mv.addObject("convidado",convidado);
+	         return mv;
+	     }
+		 
+		 @RequestMapping(value="editarConvidado/{codigo}/{rg}", method=RequestMethod.POST)
+	     public String editarConvidadoPost(@PathVariable("codigo") long codigo, @PathVariable("rg") String rg, Convidado convidado) {
+			 	
+				Evento evento = er.findByCodigo(codigo);
+				convidado.setEvento(evento);
+				cr.save(convidado);
+				
+				return "redirect:/{codigo}";
+	     }	
+	
 }

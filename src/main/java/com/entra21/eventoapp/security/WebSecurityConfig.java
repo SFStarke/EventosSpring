@@ -1,6 +1,5 @@
 package com.entra21.eventoapp.security;
 
-import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -23,8 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception{
 		http.csrf().disable().authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/").permitAll()
-		.antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("USER")// ADMIN
-		.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("USER")// ADMIN
+		.antMatchers(HttpMethod.GET, "/cadastrarEvento").hasRole("ADMIN")//   \  USER
+		.antMatchers(HttpMethod.POST, "/cadastrarEvento").hasRole("ADMIN")//  \  USER
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll() 
 		.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
