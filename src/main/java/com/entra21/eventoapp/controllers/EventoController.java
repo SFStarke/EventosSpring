@@ -122,8 +122,10 @@ public class EventoController {
 //		return "redirect:/evento/editarEvento";
 //	}
 	
-	@RequestMapping(value = "/editar_{codigo}", method = RequestMethod.GET)
-	public ModelAndView update(@PathVariable("codigo") long codigo) {
+//	@RequestMapping(value = "/editar/{codigo}", method = RequestMethod.GET)
+//	public ModelAndView update(@PathVariable("codigo") long codigo) {
+	@RequestMapping(value= "/editarEvento", method=RequestMethod.GET)
+	public ModelAndView editarEvento(long codigo){
 		
 		Evento evento = er.findByCodigo(codigo);
 		ModelAndView mv = new ModelAndView("evento/editarEvento"); 
@@ -133,23 +135,30 @@ public class EventoController {
 		mv.addObject("convidados", convidados);
 		return mv;
 	}
+	
+	//METODO QUE EDITA O EVENTO
+		@RequestMapping(value="/editarEvento", method=RequestMethod.POST)
+		public String editarEventoPost(Evento evento){
+				er.save(evento);
+				return "redirect:/eventos";
+		}
 
-	@RequestMapping(value = "/editar_{codigo}", method = RequestMethod.POST)
-	public String updatePost(@PathVariable("codigo") long codigo,
-			@Valid Evento evento, BindingResult result,
-			RedirectAttributes attributes) {
-		if(result.hasErrors()) { // Verefica se campos estão preenchidos
-	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
-	        return "redirect:editar_/{codigo}";
-	    }
-	    er.save(evento);
-	    attributes.addFlashAttribute("mensagem", "Evento atualizado com sucesso!");
-	    return "redirect:/editar_{codigo}";
-	}
+//	@RequestMapping(value = "/editar/{codigo}", method = RequestMethod.POST)
+//	public String updatePost(@PathVariable("codigo") long codigo,
+//			@Valid Evento evento, BindingResult result,
+//			RedirectAttributes attributes) {
+//		if(result.hasErrors()) { // Verefica se campos estão preenchidos
+//	        attributes.addFlashAttribute("mensagem", "Verifique os campos!");
+//	        return "redirect:editar_/{codigo}";
+//	    }
+//	    er.save(evento);
+//	    attributes.addFlashAttribute("mensagem", "Evento atualizado com sucesso!");
+//	    return "redirect:/editar/{codigo}";
+//	}
 	
 // E D I T A R  C O N V I D A D O...	
 	//METODO QUE EDITA O CONVIDADO
-		 @RequestMapping(value="updateGuest/{codigo}/{rg}", method=RequestMethod.GET)
+		 @RequestMapping(value="editarConvidado/{codigo}/{rg}", method=RequestMethod.GET)
 	     public ModelAndView editarConvidado(@PathVariable("codigo") long codigo, @PathVariable("rg") String rg) {
 	         Evento evento = er.findByCodigo(codigo);
 	         ModelAndView mv = new ModelAndView("evento/editaConvidado");

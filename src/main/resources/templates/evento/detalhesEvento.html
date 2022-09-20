@@ -61,7 +61,7 @@
 				<td><span th:text= "${convidados.nomeConvidado}"></span></td>
 				<td><span th:text= "${convidados.rg}"></span></td>
 				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#deletarConvidado').arg(0, convidados.rg)).build()}"><i class="material-icons left">delete</i></a></td>
-				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#updateGuest').arg(0, convidados.rg)).build()}"><i class="material-icons left">update</i></a></td>
+				<td><a class="waves-effect waves-light btn.small" th:href="${(#mvc.url('EC#editarConvidado').arg(0, evento.codigo).arg(1, convidados.rg)).build()}"><i class="material-icons left">update</i></a></td>
 			</tr>
 			
 		</tbody>
